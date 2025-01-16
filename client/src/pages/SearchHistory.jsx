@@ -73,16 +73,17 @@ const SearchHistory = () => {
 
   const handleDelete = async (entry) => {
     try {
-      await axios.delete(`/api/v1/search/history/${entry.id}`);
-      setSearchHistory(searchHistory.filter((item) => item.id !== entry.id));
+      await axios.get(`/api/v1/search/history/${entry.id}`);
+      setHistory(history.filter((item) => item.id !== entry.id));
     } catch (error) {
+      console.log(error);
       toast.error("Failed to delete search item");
     }
   };
 
   return (
     <div className="bg-black min-h-screen p-6">
-      <Navbar />
+      <Navbar tab={"history"} />
 
       <div className="mt-16 space-y-2">
         {history?.map((search) => (
@@ -115,7 +116,10 @@ const SearchHistory = () => {
             </div>
 
             <button
-              onClick={() => handleDelete(search.id)}
+              onClick={() => {
+                console.log(search);
+                handleDelete(search);
+              }}
               className="text-gray-400 hover:text-red-500 transition-colors p-2"
             >
               <Trash2 size={20} />

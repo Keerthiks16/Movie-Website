@@ -1,9 +1,5 @@
 import axios from "axios";
 
-//   fetch('https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1', options)
-//     .then(res => res.json())
-//     .then(res => console.log(res))
-//     .catch(err => console.error(err));
 
 export const fetchFromTMDB = async (url) => {
   const options = {

@@ -4,9 +4,9 @@ import { useAuthStore } from "../store/authUser";
 import { useContentStore } from "../store/content";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ tab }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeTab, setActiveTab] = useState("movies");
+  const [activeTab, setActiveTab] = useState(tab || "movies");
   const { contentType, setContentType } = useContentStore();
   // console.log(contentType);
 

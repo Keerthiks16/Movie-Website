@@ -77,7 +77,8 @@ const WatchPage = () => {
 
   return (
     <div className="bg-black text-white">
-      <Navbar />
+      {/* <Navbar tab={`${contentType}`} /> */}
+      {contentType === "tv" ? <Navbar tab={"tvshows"} /> : <Navbar />}
       {!details ? (
         <div className=" text-3xl text-red-600 bg-black h-screen">
           <span className="mt-20 flex self-center">No content found</span>

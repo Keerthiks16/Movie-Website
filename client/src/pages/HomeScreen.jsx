@@ -4,11 +4,13 @@ import Navbar from "../components/Navbar";
 import TrendingContent from "../components/TrendingContent";
 import Footer from "../components/Footer";
 import Categories from "../components/Categories";
+import { useContentStore } from "../store/content";
 
 const HomeScreen = () => {
+  const { contentType } = useContentStore();
   return (
     <>
-      <Navbar />
+      {contentType === "tv" ? <Navbar tab={"tvshows"} /> : <Navbar />}
       <TrendingContent />
       <Categories />
     </>
