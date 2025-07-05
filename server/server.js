@@ -30,7 +30,7 @@ app.use("/api/v1/search", protectRoute, searchRoutes);
 app.listen(PORT, () => {
   mongoose
     .connect(MONGO_URI)
-    .then(() => console.log(`Mongodb connection successful to ${MONGO_URI}`))
+    .then(() => console.log(`Mongodb connection successful`))
     .catch((error) => console.log(`Error in Mongodb Connection: ${error}`));
   console.log(`Server running on: http://localhost:${PORT}`);
 });
