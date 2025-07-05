@@ -6,6 +6,7 @@ import { ORIGINAL_IMG_BASE_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 import { useContentStore } from "../store/content";
 const SearchPage = () => {
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
   const [activeTab, setActiveTab] = useState("Movies");
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -34,9 +35,12 @@ const SearchPage = () => {
   const handleSearch = async (query) => {
     try {
       setSearchQuery(query);
-      const results = await axios.get(`/api/v1/search/${type}/${searchQuery}`, {
-        withCredentials: true,
-      });
+      const results = await axios.get(
+        `${SERVER_URL}/api/v1/search/${type}/${searchQuery}`,
+        {
+          withCredentials: true,
+        }
+      );
       const content =
         results.data.movie || results.data.tv || results.data.people;
       console.log("Content: ", content);

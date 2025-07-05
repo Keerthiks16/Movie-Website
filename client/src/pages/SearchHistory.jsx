@@ -6,7 +6,8 @@ import { ORIGINAL_IMG_BASE_URL } from "../utils/constants";
 import toast from "react-hot-toast";
 
 const SearchHistory = () => {
-  const [history, setHistory] = useState([]); // Initialize with empty array
+  const [history, setHistory] = useState([]); 
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 
   function formatDate(dateString) {
     // Create a Date object from the input date string
@@ -39,7 +40,7 @@ const SearchHistory = () => {
   useEffect(() => {
     const getSearchHistory = async () => {
       try {
-        const res = await axios.get(`/api/v1/search/history`, {
+        const res = await axios.get(`${SERVER_URL}/api/v1/search/history`, {
         withCredentials: true,
       });
         const searchHistory = res.data.searchHistory;
@@ -75,7 +76,7 @@ const SearchHistory = () => {
 
   const handleDelete = async (entry) => {
     try {
-      await axios.get(`/api/v1/search/history/${entry.id}`, {
+      await axios.get(`${SERVER_URL}/api/v1/search/history/${entry.id}`, {
         withCredentials: true,
       });
       setHistory(history.filter((item) => item.id !== entry.id));

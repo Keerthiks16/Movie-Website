@@ -5,6 +5,7 @@ import axios from "axios";
 import { ORIGINAL_IMG_BASE_URL, SMALL_IMG_BASE_URL } from "../utils/constants";
 import { Link } from "react-router-dom";
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 const MovieSlider = ({ category }) => {
   const sliderRef = useRef(null);
   const [showLeftArrow, setShowLeftArrow] = useState(false);
@@ -18,7 +19,7 @@ const MovieSlider = ({ category }) => {
 
   useEffect(() => {
     const getContent = async () => {
-      const res = await axios.get(`/api/v1/${contentType}/${category}`, {
+      const res = await axios.get(`${SERVER_URL}/api/v1/${contentType}/${category}`, {
         withCredentials: true,
       });
       setContent(res.data.content);

@@ -2,6 +2,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { create } from "zustand";
 
+const SERVER_URL = import.meta.env.VITE_SERVER_URL;
 export const useAuthStore = create((set) => ({
   user: null,
   Loading: false,
@@ -10,9 +11,13 @@ export const useAuthStore = create((set) => ({
   signup: async (formData) => {
     set({ Loading: true });
     try {
-      const response = await axios.post("/api/v1/auth/signup", formData, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `${SERVER_URL}/api/v1/auth/signup`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       set({ user: response.data.user, Loading: false });
       toast.success("Signup successful");
     } catch (error) {
@@ -24,9 +29,13 @@ export const useAuthStore = create((set) => ({
   login: async (formData) => {
     try {
       set({ Loading: true });
-      const response = await axios.post("/api/v1/auth/login", formData, {
-        withCredentials: true,
-      });
+      const response = await axios.post(
+        `${SERVER_URL}/api/v1/auth/login`,
+        formData,
+        {
+          withCredentials: true,
+        }
+      );
       set({ user: response.data.user, Loading: false });
     } catch (error) {
       toast.error(error.response?.data?.message || "Login failed");
@@ -38,7 +47,7 @@ export const useAuthStore = create((set) => ({
     try {
       set({ Loading: true });
       await axios.post(
-        "/api/v1/auth/logout",
+        `${SERVER_URL}/api/v1/auth/logout`,
         {},
         {
           withCredentials: true,
@@ -54,7 +63,7 @@ export const useAuthStore = create((set) => ({
   authCheck: async () => {
     try {
       set({ AuthLoading: true });
-      const response = await axios.get("/api/v1/auth/authcheck", {
+      const response = await axios.get(`${SERVER_URL}/api/v1/auth/authCheck`, {
         withCredentials: true,
       });
       set({ user: response.data.user, AuthLoading: false });

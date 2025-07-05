@@ -10,6 +10,7 @@ import { ORIGINAL_IMG_BASE_URL } from "../utils/constants";
 import SimilarContent from "../components/SimilarContent";
 
 const WatchPage = () => {
+  const SERVER_URL = import.meta.env.VITE_SERVER_URL;
   const { contentType } = useContentStore();
   const { id } = useParams();
   const [trailers, setTrailers] = useState([]);
@@ -20,7 +21,7 @@ const WatchPage = () => {
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const res = await axios.get(`/api/v1/${contentType}/${id}/details`, {
+        const res = await axios.get(`${SERVER_URL}/api/v1/${contentType}/${id}/details`, {
           withCredentials: true,
         });
         setDetails(res.data.details);
@@ -37,7 +38,7 @@ const WatchPage = () => {
   useEffect(() => {
     const getSimilarMovies = async () => {
       try {
-        const res = await axios.get(`/api/v1/${contentType}/${id}/similar`, {
+        const res = await axios.get(`${SERVER_URL}/api/v1/${contentType}/${id}/similar`, {
           withCredentials: true,
         });
         setSimilarMovie(res.data.similar);
@@ -54,7 +55,7 @@ const WatchPage = () => {
   useEffect(() => {
     const getTrailers = async () => {
       try {
-        const res = await axios.get(`/api/v1/${contentType}/${id}/trailers`, {
+        const res = await axios.get(`${SERVER_URL}/api/v1/${contentType}/${id}/trailers`, {
           withCredentials: true,
         });
         setTrailers(res.data.trailers);

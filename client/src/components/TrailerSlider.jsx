@@ -13,19 +13,7 @@ const TrailerSlider = ({ activeIndex, setActiveIndex, title, trailers }) => {
           : Math.min(trailers.length - 1, activeIndex + 1);
 
       setActiveIndex(newIndex);
-      // console.log("activeIndex: ", activeIndex);
-      // console.log(
-      //   `https://www.youtube.com/watch?v=${trailers[activeIndex]?.key}`
-      // );
-
-      // useEffect(() => {
-      //   const resetIndex = () => {
-      //     setActiveIndex(0);
-      //   };
-      //   resetIndex();
-      // }, [trailers]);
-
-      // Calculate the exact position to scroll to based on the index
+      
       const slideWidth = sliderRef.current.clientWidth;
       const newScrollLeft = newIndex * slideWidth;
 
