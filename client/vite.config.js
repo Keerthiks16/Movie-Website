@@ -7,7 +7,9 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:5000",
+        target: "https://movie-website-1-w7l4.onrender.com/",
+        changeOrigin: true,
+        secure: false,
       },
     },
   },
