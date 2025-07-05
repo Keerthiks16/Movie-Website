@@ -39,7 +39,9 @@ const SearchHistory = () => {
   useEffect(() => {
     const getSearchHistory = async () => {
       try {
-        const res = await axios.get(`/api/v1/search/history`);
+        const res = await axios.get(`/api/v1/search/history`, {
+        withCredentials: true,
+      });
         const searchHistory = res.data.searchHistory;
 
         // Flatten the array immediately when we get it from the response
@@ -73,7 +75,9 @@ const SearchHistory = () => {
 
   const handleDelete = async (entry) => {
     try {
-      await axios.get(`/api/v1/search/history/${entry.id}`);
+      await axios.get(`/api/v1/search/history/${entry.id}`, {
+        withCredentials: true,
+      });
       setHistory(history.filter((item) => item.id !== entry.id));
     } catch (error) {
       console.log(error);

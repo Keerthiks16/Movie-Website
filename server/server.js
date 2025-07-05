@@ -7,6 +7,7 @@ import searchRoutes from "./routes/search.routes.js";
 import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import { protectRoute } from "./middlewares/protectRoute.js";
+import cors from "cors";
 
 dotenv.config();
 
@@ -17,6 +18,23 @@ app.use(cookieParser());
 
 const PORT = process.env.PORT || 5001;
 const MONGO_URI = process.env.MONGO_URI;
+const allowedOrigins = [
+  "https://movie-website-f4tj.vercel.app",
+  "http://localhost:5173",
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Welcome to Movie Time Server, lessgo");

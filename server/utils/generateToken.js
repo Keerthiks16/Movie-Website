@@ -4,9 +4,9 @@ export const generateToken = (userId, res) => {
     expiresIn: "15d",
   });
   res.cookie("movie-app-token", token, {
-    httpOnly: true, 
+    httpOnly: true,
     maxAge: 15 * 24 * 60 * 60 * 1000,
     secure: process.env.NODE_ENV === "production" ? true : false,
-    sameSite: "None", 
+    sameSite: "None",
   });
 };

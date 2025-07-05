@@ -20,8 +20,10 @@ const WatchPage = () => {
   useEffect(() => {
     const getDetails = async () => {
       try {
-        const res = await axios.get(`/api/v1/${contentType}/${id}/details`);
-        await setDetails(res.data.details);
+        const res = await axios.get(`/api/v1/${contentType}/${id}/details`, {
+          withCredentials: true,
+        });
+        setDetails(res.data.details);
       } catch (error) {
         if (error.message.includes("404")) {
           setDetails(null);
@@ -35,8 +37,10 @@ const WatchPage = () => {
   useEffect(() => {
     const getSimilarMovies = async () => {
       try {
-        const res = await axios.get(`/api/v1/${contentType}/${id}/similar`);
-        await setSimilarMovie(res.data.similar);
+        const res = await axios.get(`/api/v1/${contentType}/${id}/similar`, {
+          withCredentials: true,
+        });
+        setSimilarMovie(res.data.similar);
       } catch (error) {
         if (error.message.includes("404")) {
           setSimilarMovie([]);
@@ -50,8 +54,10 @@ const WatchPage = () => {
   useEffect(() => {
     const getTrailers = async () => {
       try {
-        const res = await axios.get(`/api/v1/${contentType}/${id}/trailers`);
-        await setTrailers(res.data.trailers);
+        const res = await axios.get(`/api/v1/${contentType}/${id}/trailers`, {
+          withCredentials: true,
+        });
+        setTrailers(res.data.trailers);
       } catch (error) {
         if (error.message.includes("404")) {
           setTrailers([]);
@@ -63,21 +69,15 @@ const WatchPage = () => {
   }, [contentType, id]);
 
   useEffect(() => {
-    const resetIndex = async () => setActiveIndex(0);
-    resetIndex();
+    setActiveIndex(0);
   }, [contentType, id]);
 
   const roundToOneDecimal = (number) => {
     return Math.round(number * 10) / 10;
   };
 
-  //   console.log("Details: ", details);
-  // console.log("Similar Movies: ", similarMovie);
-  //   console.log("Trailers: ", trailers);
-
   return (
     <div className="bg-black text-white">
-      {/* <Navbar tab={`${contentType}`} /> */}
       {contentType === "tv" ? <Navbar tab={"tvshows"} /> : <Navbar />}
       {!details ? (
         <div className=" text-3xl text-red-600 bg-black h-screen">
@@ -99,7 +99,7 @@ const WatchPage = () => {
             rating={roundToOneDecimal(details?.vote_average) + " ⭐"}
             description={details.overview}
             posterImage={ORIGINAL_IMG_BASE_URL + details.poster_path}
-          />{" "}
+          />
           <SimilarContent similar={similarMovie} />
         </>
       )}
