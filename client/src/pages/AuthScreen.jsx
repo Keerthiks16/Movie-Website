@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Mail, Film, Tv, Star, ChevronRight } from "lucide-react";
 import Footer from "../components/Footer";
 import { Link, useNavigate } from "react-router-dom";
+import background from "../assets/movie-app-main.jpg";
 
 const AuthScreen = () => {
   const [email, setEmail] = useState("");
@@ -14,12 +15,12 @@ const AuthScreen = () => {
   };
 
   return (
-    <div className="min-h-screen w-full bg-black text-white">
+    <div className="min-h-screen w-full  text-white">
       {/* Hero Section with Background */}
       <div className=" min-h-screen">
-        {/* Background Image */}
+        <image src={background} alt="Background" />
         <div className="absolute inset-0 bg-[url('/api/placeholder/1920/1080')] bg-cover bg-center">
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
+          <div className="absolute inset-0 "></div>
         </div>
 
         {/* Content */}
@@ -33,7 +34,7 @@ const AuthScreen = () => {
             </Link>
           </nav>
 
-          <div className="max-w-3xl mx-auto text-center mt-32">
+          <div className="max-w-3xl mx-auto text-center mt-16 bg-black/80 px-20 py-10 rounded-3xl">
             <h2 className="text-5xl font-bold mb-4">
               Unlimited Movies, TV Shows, and Star Info
             </h2>
@@ -73,7 +74,7 @@ const AuthScreen = () => {
       </div>
 
       {/* Features Section */}
-      <div className="py-20 border-t border-gray-800">
+      <div className="py-20 border-t border-gray-800 bg-black">
         <div className="container mx-auto px-4">
           <h3 className="text-3xl font-bold text-center mb-16">
             Everything You Need to Know About Entertainment
@@ -121,7 +122,7 @@ const AuthScreen = () => {
       </div>
 
       {/* FAQ Section */}
-      <div className="py-20 border-t border-gray-800">
+      <div className="py-20 border-t border-gray-800 bg-black/50">
         <div className="container mx-auto px-4">
           <h3 className="text-3xl font-bold text-center mb-12">
             Why Choose MovieVerse?
