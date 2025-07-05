@@ -25,7 +25,7 @@ const AuthScreen = () => {
         {/* Content */}
         <div className="relative z-10 container mx-auto px-4 py-16">
           <nav className="flex justify-between items-center mb-16">
-            <h1 className="text-4xl font-bold text-red-600">MovieVerse</h1>
+            <h1 className="text-4xl font-bold text-red-600">MovieFlix</h1>
             <Link to="/signup">
               <button className="px-4 py-2 bg-red-600 rounded-md hover:bg-red-700 transition">
                 Sign In
