@@ -7,6 +7,6 @@ export const generateToken = (userId, res) => {
     httpOnly: true,
     maxAge: 15 * 24 * 60 * 60 * 1000,
     secure: process.env.NODE_ENV === "production" ? true : false,
-    sameSite: "None",
+    sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax",
   });
 };
