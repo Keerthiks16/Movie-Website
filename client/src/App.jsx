@@ -1,6 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import SignupPage from "./pages/SignUpPage";
+import SignUpPage from "./pages/SignUpPage";
 import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import Footer from "./components/Footer";
@@ -37,7 +37,7 @@ function App() {
               <Route path="/" element={<HomePage />} />
               <Route
                 path="/signup"
-                element={!user ? <SignupPage /> : <Navigate to="/" />}
+                element={!user ? <SignUpPage /> : <Navigate to="/" />}
               />
               <Route
                 path="/login"

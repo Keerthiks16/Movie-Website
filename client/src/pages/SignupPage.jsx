@@ -3,7 +3,7 @@ import { User, Mail, Lock, Eye, EyeOff, Loader2 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuthStore } from "../store/authUser";
 
-const SignupPage = () => {
+const SignUpPage = () => {
   const { signup, Loading } = useAuthStore();
 
   const { searchParams } = new URL(window.location);
@@ -131,4 +131,4 @@ const SignupPage = () => {
   );
 };
 
-export default SignupPage;
+export default SignUpPage;
