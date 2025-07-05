@@ -19,7 +19,7 @@ app.use(cookieParser());
 const PORT = process.env.PORT || 5001;
 const MONGO_URI = process.env.MONGO_URI;
 const allowedOrigins = [
-  "https://movie-website-1a.vercel.app/",
+  "https://movie-website-1a.vercel.app",
   "http://localhost:5173",
 ];
 
